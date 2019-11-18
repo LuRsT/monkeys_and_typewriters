@@ -1,15 +1,17 @@
 import json
 import random
 
+
 def get_dictionary():
     with open("dict.json", "r") as dict_file:
         contents = dict_file.read()
     return json.loads(contents)
 
+
 ALPHABET = "abcdefghijklmnopqrstuvwxyz"
 
-class TypingMonkey:
 
+class TypingMonkey:
     def __init__(self, gene_pool=None):
         gene_pool = gene_pool or ALPHABET
         self.alphabet = random.sample(gene_pool, 10)
@@ -28,8 +30,8 @@ class TypingMonkey:
             monkey_text += line
         return monkey_text
 
-class WordMonkey:
 
+class WordMonkey:
     def __init__(self, words):
         self.words = words
 
@@ -44,6 +46,7 @@ class WordMonkey:
             while len(line) < 80:
                 line += self.write_word() + " "
         return line
+
 
 def get_allowed_words(text):
     allowed_words = []
@@ -87,6 +90,7 @@ def main():
         print(second_best_monkey)
 
         monkeys = reproduce(best_monkey[1], second_best_monkey[1], 5)
+
 
 if __name__ == "__main__":
     main()
